@@ -11,11 +11,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages="com.example.*")
 @EnableJpaRepositories(basePackages="com.example.*")
 
-public class Demo2Application {
+public class Demo1Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Demo2Application.class, args);
-	    System.out.println("Done");
+		SpringApplication.run(Demo1Application.class, args);
+		System.out.println("DONE");
 	}
 
 }

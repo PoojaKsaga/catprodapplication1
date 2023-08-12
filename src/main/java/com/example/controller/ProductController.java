@@ -1,11 +1,11 @@
 package com.example.controller;
 
 import com.example.entity.Product;
-import com.example.services.ProductService;
+import com.example.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
@@ -20,18 +20,20 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id) {
+    public Optional<Product> getProductById(@PathVariable Long id) {
         return productService.getProductById(id);
     }
 
     @PostMapping
     public Product createProduct(@RequestBody Product product) {
+    	System.out.println(product);
         return productService.createProduct(product);
     }
 
     @PutMapping("/{id}")
     public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
-        return productService.updateProduct(id, product);
+        product.setId(id);
+        return productService.updateProduct(product);
     }
 
     @DeleteMapping("/{id}")
